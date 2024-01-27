@@ -47,9 +47,12 @@ public class Gmail extends Email {
 //        Mails newMail = new Mails(date,message,sender);
 //        root.next = newMail;
         if(inbox.size() >= inboxCapacity){
-            trash.add(inbox.remove(0));
+            trash.add(inbox.get(0));
+            inbox.remove(0);
         }
-        inbox.add(new Mails(date,message,sender));
+        Mails recievedMail = new Mails(date, message, sender);
+        inbox.add(recievedMail);
+        //inbox.add(new Mails(date,message,sender));
     }
 
     public void deleteMail(String message){
@@ -78,7 +81,9 @@ public class Gmail extends Email {
         for (int i=0; i<inbox.size(); i++){
             Mails curr = inbox.get(i);
             if(curr.getMsg().equals(message)){
-                trash.add(inbox.remove(i));
+                trash.add(inbox.get(i));
+                inbox.remove(i);
+                break;
             }
         }
     }
@@ -92,6 +97,7 @@ public class Gmail extends Email {
 //            root = root.next;
 //        }
 //        return root.getMessage();
+        if (inbox.isEmpty()) return null;
         return inbox.get(inbox.size()-1).getMsg();
     }
 
@@ -103,6 +109,7 @@ public class Gmail extends Email {
 //        if(root.next == null) return "null";
 //        root = root.next;
 //        return root.getMessage();
+        if(inbox.isEmpty()) return null;
         return inbox.get(0).getMsg();
     }
 
