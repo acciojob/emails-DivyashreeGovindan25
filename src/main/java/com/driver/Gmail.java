@@ -15,13 +15,13 @@ public class Gmail extends Email {
     public Gmail(String emailId, int inboxCapacity) throws ParseException {
         super(emailId);
         this.inboxCapacity = inboxCapacity;
-        try{
+//        try{
             inbox = new Mails(new SimpleDateFormat("dd/MM/yyyy").parse("01/01/1999"),"First","Duplicate");
             trash = new Mails(new SimpleDateFormat("dd/MM/yyyy").parse("01/01/1999"),"First","Duplicate");
-        }
-        catch (Exception e){
-            System.out.println(e.getMessage());
-        }
+//        }
+//        catch (Exception e){
+//            System.out.println(e.getMessage());
+//        }
     }
 
     public void receiveMail(Date date, String sender, String message){
