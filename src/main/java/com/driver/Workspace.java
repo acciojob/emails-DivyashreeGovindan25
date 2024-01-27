@@ -36,7 +36,7 @@ public class Workspace extends Gmail{
             return a.getEndTime().compareTo(b.getEndTime());
         });
         int count = 1;
-        try {
+//        try {
             LocalTime endTime = calendar.get(0).getEndTime();
             for(int i=1; i<calendar.size(); i++){
                 Meeting curr = calendar.get(i);
@@ -47,10 +47,10 @@ public class Workspace extends Gmail{
                 //else if(curr.getStartTime().compareTo(endTime) > 0)
             }
             return count;
-        }
-        catch (Exception e){
-            System.out.println(e.getMessage());
-        }
+        //}
+//        catch (Exception e){
+//            System.out.println(e.getMessage());
+//        }
         //return count;
     }
 }
