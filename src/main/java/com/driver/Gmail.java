@@ -15,8 +15,13 @@ public class Gmail extends Email {
     public Gmail(String emailId, int inboxCapacity) throws ParseException {
         super(emailId);
         this.inboxCapacity = inboxCapacity;
-        inbox = new Mails(new SimpleDateFormat("dd/MM/yyyy").parse("01/01/1999"),"First","Duplicate");
-        trash = new Mails(new SimpleDateFormat("dd/MM/yyyy").parse("01/01/1999"),"First","Duplicate");
+        try{
+            inbox = new Mails(new SimpleDateFormat("dd/MM/yyyy").parse("01/01/1999"),"First","Duplicate");
+            trash = new Mails(new SimpleDateFormat("dd/MM/yyyy").parse("01/01/1999"),"First","Duplicate");
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage());
+        }
     }
 
     public void receiveMail(Date date, String sender, String message){
@@ -45,7 +50,7 @@ public class Gmail extends Email {
         // If the given message is found in any mail in the inbox, move the mail to trash, else do nothing
         Mails root = inbox;
         Mails prev = null;
-        if(root == null) System.out.println("Null in dm");
+        //if(root == null) System.out.println("Null in dm");
         while(root != null && !root.getMessage().equals(message)){
             prev = root;
             root = root.next;
@@ -68,7 +73,7 @@ public class Gmail extends Email {
         // If the inbox is empty, return null
         // Else, return the message of the latest mail present in the inbox
         Mails root = inbox;
-        if(root == null) System.out.println("Null in flm");
+        //if(root == null) System.out.println("Null in flm");
         while(root.next != null){
             root = root.next;
         }
@@ -79,7 +84,7 @@ public class Gmail extends Email {
         // If the inbox is empty, return null
         // Else, return the message of the oldest mail present in the inbox
         Mails root = inbox;
-        if(root == null) System.out.println("Null in fom");
+        //if(root == null) System.out.println("Null in fom");
         if(root.next == null) return "null";
         root = root.next;
         return root.getMessage();
@@ -90,7 +95,7 @@ public class Gmail extends Email {
         //It is guaranteed that start date <= end date
         int no = 0;
         Mails root = inbox;
-        if(root == null) System.out.println("Null in fmbd");
+        //if(root == null) System.out.println("Null in fmbd");
         while(root != null){
             if(root.getDate().compareTo(start) >= 0 && root.getDate().compareTo(end) <= 0){
                 no++;
@@ -103,7 +108,7 @@ public class Gmail extends Email {
     public int getInboxSize(){
         int size = -1;
         Mails root = inbox;
-        if(root == null) System.out.println("Null in gi");
+        //if(root == null) System.out.println("Null in gi");
         while(root != null){
             root = root.next;
             size++;
@@ -115,7 +120,7 @@ public class Gmail extends Email {
         // Return number of mails in Trash
         int size = -1;
         Mails root = trash;
-        if(root == null) System.out.println("Null in gt");
+        //if(root == null) System.out.println("Null in gt");
         while(root != null){
             root = root.next;
             size++;
@@ -125,7 +130,7 @@ public class Gmail extends Email {
 
     public void emptyTrash(){
         Mails root = trash;
-        if(root == null) System.out.println("Null in et");
+       // if(root == null) System.out.println("Null in et");
         root.next = null;
     }
 

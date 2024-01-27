@@ -5,6 +5,7 @@ import org.apache.commons.lang3.tuple.Pair;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalTime;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -23,7 +24,7 @@ public class Workspace extends Gmail{
         calendar.add(meeting);
     }
 
-    public int findMaxMeetings() throws ParseException{
+    public int findMaxMeetings() throws DateTimeParseException {
         // find the maximum number of meetings you can attend
         // 1. At a particular time, you can be present in at most one meeting
         // 2. If you want to attend a meeting, you must join it at its start time and leave at end time.
@@ -35,15 +36,21 @@ public class Workspace extends Gmail{
             return a.getEndTime().compareTo(b.getEndTime());
         });
         int count = 0;
-        LocalTime endTime = LocalTime.parse("00:00");
-        for(int i=0; i<calendar.size(); i++){
-            Meeting curr = calendar.get(i);
-            if(curr.getStartTime().compareTo(endTime) > 0){
-                endTime = curr.getEndTime();
-                count++;
+//        try {
+            LocalTime endTime = LocalTime.parse("00:00");
+            for(int i=0; i<calendar.size(); i++){
+                Meeting curr = calendar.get(i);
+                if(curr.getStartTime().compareTo(endTime) > 0){
+                    endTime = curr.getEndTime();
+                    count++;
+                }
+                //else if(curr.getStartTime().compareTo(endTime) > 0)
             }
-            //else if(curr.getStartTime().compareTo(endTime) > 0)
-        }
-        return count;
+            return count;
+//        }
+//        catch (Exception e){
+//            System.out.println(e.getMessage());
+//        }
+        //return count;
     }
 }
