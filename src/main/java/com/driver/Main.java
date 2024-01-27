@@ -5,7 +5,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalTime;
 
 public class Main {
-    public static void main(String[] args) throws ParseException {
+    public static void main(String[] args)  {
         try{
             Email email = new Email("accio@gmail.com");
 //            email.changePassword("Accio@123", "V12@");

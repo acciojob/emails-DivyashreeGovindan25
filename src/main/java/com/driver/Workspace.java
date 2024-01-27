@@ -13,7 +13,7 @@ public class Workspace extends Gmail{
 
     private ArrayList<Meeting> calendar; // Stores all the meetings
 
-    public Workspace(String emailId) throws ParseException {
+    public Workspace(String emailId) {
         // The inboxCapacity is equal to the maximum value an integer can store.
         super(emailId,Integer.MAX_VALUE);
         calendar = new ArrayList<>();
@@ -24,7 +24,7 @@ public class Workspace extends Gmail{
         calendar.add(meeting);
     }
 
-    public int findMaxMeetings() throws DateTimeParseException {
+    public int findMaxMeetings() {
         // find the maximum number of meetings you can attend
         // 1. At a particular time, you can be present in at most one meeting
         // 2. If you want to attend a meeting, you must join it at its start time and leave at end time.
@@ -36,7 +36,7 @@ public class Workspace extends Gmail{
             return a.getEndTime().compareTo(b.getEndTime());
         });
         int count = 1;
-//        try {
+        try {
             LocalTime endTime = calendar.get(0).getEndTime();
             for(int i=1; i<calendar.size(); i++){
                 Meeting curr = calendar.get(i);
@@ -47,10 +47,10 @@ public class Workspace extends Gmail{
                 //else if(curr.getStartTime().compareTo(endTime) > 0)
             }
             return count;
-//        }
-//        catch (Exception e){
-//            System.out.println(e.getMessage());
-//        }
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage());
+        }
         //return count;
     }
 }
