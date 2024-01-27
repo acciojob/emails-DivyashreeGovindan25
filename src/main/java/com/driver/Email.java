@@ -2,8 +2,8 @@ package com.driver;
 
 public class Email {
 
-    private String emailId;
-    private String password;
+    String emailId;
+    String password;
 
     public Email(String emailId){
         this.emailId = emailId;
