@@ -25,13 +25,27 @@ public class Email {
         // 3. It contains at least one lowercase letter
         // 4. It contains at least one digit
         // 5. It contains at least one special character. Any character apart from alphabets and digits is a special character
-        if(!oldPassword.equals(password)) return;//throw new PasswordDoesntMatchWithOldPassword("Old password is wrong");
-        if(newPassword.length() < 8) return;//throw new PassLengthInvalid("Kindly enter atleast 8 characters");
-        if(!doesItContainOneUpper(newPassword)) return;//throw new NoUppperCaseFound("Password must have atleast one upper case character");
-        if(!doesItContainOneLower(newPassword)) return;//throw new NoLowerCaseFound("Password must have atleast one lower case character");
-        if(!doesItContainOneDigit(newPassword)) return;//throw new NoDigitsFound("Password must have atleast one number");
-        if(!doesItContainOneSpecial(newPassword)) return;//throw new NoSpecialCharactersFound("Password must have atleast one special character");
-        password = newPassword;
+        //if(!oldPassword.equals(password)) return;//throw new PasswordDoesntMatchWithOldPassword("Old password is wrong");
+//        if(newPassword.length() < 8) return;//throw new PassLengthInvalid("Kindly enter atleast 8 characters");
+//        if(!doesItContainOneUpper(newPassword)) return;//throw new NoUppperCaseFound("Password must have atleast one upper case character");
+//        if(!doesItContainOneLower(newPassword)) return;//throw new NoLowerCaseFound("Password must have atleast one lower case character");
+//        if(!doesItContainOneDigit(newPassword)) return;//throw new NoDigitsFound("Password must have atleast one number");
+//        if(!doesItContainOneSpecial(newPassword)) return;//throw new NoSpecialCharactersFound("Password must have atleast one special character");
+//        boolean upper = false;
+//        boolean lower = false;
+//        boolean digit = false;
+//        boolean special = false;
+//        for(char c : newPassword.toCharArray()){
+//            if(c >= 'A' && c <= 'Z') upper = true;
+//            else if (c >= 'a' && c <= 'z') lower = true;
+//            else if (c >= '0' && c <= '9') digit = true;
+//        }
+        if (oldPassword.equals(password) && newPassword.length() >= 8) {
+            String passwordRegex = "^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?=.*[^A-Za-z0-9]).{8,}$";
+            if (newPassword.matches(passwordRegex)) {
+                password = newPassword;
+            }
+        }
     }
     private static boolean doesItContainOneUpper(String str){
         for(char c : str.toCharArray()){
