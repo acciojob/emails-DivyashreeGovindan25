@@ -25,12 +25,12 @@ public class Email {
         // 3. It contains at least one lowercase letter
         // 4. It contains at least one digit
         // 5. It contains at least one special character. Any character apart from alphabets and digits is a special character
-        if(!oldPassword.equals(password)) throw new PasswordDoesntMatchWithOldPassword("Old password is wrong");
-        if(newPassword.length() < 8) throw new PassLengthInvalid("Kindly enter atleast 8 characters");
-        if(!doesItContainOneUpper(newPassword)) throw new NoUppperCaseFound("Password must have atleast one upper case character");
-        if(!doesItContainOneLower(newPassword)) throw new NoLowerCaseFound("Password must have atleast one lower case character");
-        if(!doesItContainOneDigit(newPassword)) throw new NoDigitsFound("Password must have atleast one number");
-        if(!doesItContainOneSpecial(newPassword)) throw new NoSpecialCharactersFound("Password must have atleast one special character");
+        if(!oldPassword.equals(password)) return;//throw new PasswordDoesntMatchWithOldPassword("Old password is wrong");
+        if(newPassword.length() < 8) return;//throw new PassLengthInvalid("Kindly enter atleast 8 characters");
+        if(!doesItContainOneUpper(newPassword)) return;//throw new NoUppperCaseFound("Password must have atleast one upper case character");
+        if(!doesItContainOneLower(newPassword)) return;//throw new NoLowerCaseFound("Password must have atleast one lower case character");
+        if(!doesItContainOneDigit(newPassword)) return;//throw new NoDigitsFound("Password must have atleast one number");
+        if(!doesItContainOneSpecial(newPassword)) return;//throw new NoSpecialCharactersFound("Password must have atleast one special character");
         password = newPassword;
     }
     private static boolean doesItContainOneUpper(String str){
