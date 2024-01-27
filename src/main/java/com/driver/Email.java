@@ -47,29 +47,29 @@ public class Email {
             }
         }
     }
-    private static boolean doesItContainOneUpper(String str){
-        for(char c : str.toCharArray()){
-            if(c >= 'A' && c <= 'Z') return true;
-        }
-        return false;
-    }
-    private static boolean doesItContainOneLower(String str){
-        for(char c : str.toCharArray()){
-            if(c >= 'a' && c <= 'z') return true;
-        }
-        return false;
-    }
-    private static boolean doesItContainOneDigit(String str){
-        for(char c : str.toCharArray()){
-            if(c >= '0' && c <= '9') return true;
-        }
-        return false;
-    }
-    private static boolean doesItContainOneSpecial(String str){
-        for(char c : str.toCharArray()){
-            if(!doesItContainOneUpper(c+"") && !doesItContainOneLower(c+"") && !doesItContainOneDigit(c+"")) return true;
-        }
-        return false;
-    }
+//    private static boolean doesItContainOneUpper(String str){
+//        for(char c : str.toCharArray()){
+//            if(c >= 'A' && c <= 'Z') return true;
+//        }
+//        return false;
+//    }
+//    private static boolean doesItContainOneLower(String str){
+//        for(char c : str.toCharArray()){
+//            if(c >= 'a' && c <= 'z') return true;
+//        }
+//        return false;
+//    }
+//    private static boolean doesItContainOneDigit(String str){
+//        for(char c : str.toCharArray()){
+//            if(c >= '0' && c <= '9') return true;
+//        }
+//        return false;
+//    }
+//    private static boolean doesItContainOneSpecial(String str){
+//        for(char c : str.toCharArray()){
+//            if(!doesItContainOneUpper(c+"") && !doesItContainOneLower(c+"") && !doesItContainOneDigit(c+"")) return true;
+//        }
+//        return false;
+//    }
 
 }

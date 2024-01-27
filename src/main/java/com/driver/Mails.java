@@ -19,7 +19,7 @@ public class Mails {
         return date;
     }
 
-    public String getMessage() {
+    public String getMsg() {
         return message;
     }
 
