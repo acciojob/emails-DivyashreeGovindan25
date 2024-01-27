@@ -56,7 +56,8 @@ public class Gmail extends Email {
             root = root.next;
         }
         if(root == null){
-            throw new NoEmailWithTheGivenMessageFounf(message);
+//            throw new NoEmailWithTheGivenMessageFounf(message);
+            return;
         }
         Mails frwd = root.next;
         Mails curr = root;
